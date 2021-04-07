@@ -33,7 +33,7 @@ Future<Map<String, dynamic>> _codeExchangeSignIn({
   final InternetAddress address = InternetAddress.loopbackIPv4;
   final HttpServer server = await HttpServer.bind(address, 0);
   final int port = server.port;
-  final String redirectUrl = 'http://${address.host}:$port';
+  final String redirectUrl = 'http://www.google.com';
 
   server.listen((HttpRequest request) async {
     final Uri uri = request.requestedUri;
