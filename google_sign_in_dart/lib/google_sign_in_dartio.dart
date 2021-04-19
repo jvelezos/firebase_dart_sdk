@@ -34,6 +34,8 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
     @required String clientId,
     @required UrlPresenter presenter,
     String exchangeEndpoint,
+    String successUrl,
+    String failUrl,
   })  : assert(storage != null),
         assert(clientId != null),
         assert(presenter != null),
@@ -253,7 +255,7 @@ class GoogleSignInDart extends platform.GoogleSignInPlatform {
       );
 
       if (response.statusCode > 300) {
-        if (response.statusCode == 401){
+        if (response.statusCode == 401) {
           await signOut();
         }
         throw PlatformException(

@@ -16,6 +16,7 @@ Future<Map<String, dynamic>> _codeExchangeSignIn({
   @required UrlPresenter presenter,
   String hostedDomains,
   String uid,
+  String redirectURL,
 }) async {
   assert(clientId != null);
   assert(exchangeEndpoint != null);
@@ -33,7 +34,7 @@ Future<Map<String, dynamic>> _codeExchangeSignIn({
   final InternetAddress address = InternetAddress.loopbackIPv4;
   final HttpServer server = await HttpServer.bind(address, 0);
   final int port = server.port;
-  final String redirectUrl = 'http://${address.host}:$port';
+  final String redirectUrl = redirectURL ?? 'http://${address.host}:$port';
 
   server.listen((HttpRequest request) async {
     final Uri uri = request.requestedUri;
